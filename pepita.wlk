@@ -1,6 +1,16 @@
+import comidas.*
+import wollok.game.*
+
 
 object pepita {
+	var property position = game.at(0,1) //
 	var energia = 100
+	
+	method image() = "pepita.png"
+	
+	method text() = "Energia: \n" + energia
+
+	method textColor() = "FF0000"
 
 	method comer(comida) {
 		energia = energia + comida.energiaQueOtorga()
@@ -14,5 +24,9 @@ object pepita {
 		return energia
 	}
 
+	method redibujarse(){
+	  game.removeVisual(self)
+	  game.addVisual(self)
+	}
 }
 
