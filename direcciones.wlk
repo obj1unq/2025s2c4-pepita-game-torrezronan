@@ -1,5 +1,7 @@
 import wollok.game.*
 import pepita.*
+import limites.*
+
 
 object arriba{
     method siguiente(posicion) = posicion.up(1)
@@ -15,4 +17,7 @@ object derecha{
 
 object izquierda{
     method siguiente(posicion) = posicion.left(1)
+
+
+    
 }

@@ -2,6 +2,8 @@ import comidas.*
 import wollok.game.*
 import extras.*
 import direcciones.*
+import limites.*
+
 
 
 
@@ -37,7 +39,7 @@ object pepita {
 
 	//
 
-	method puedeMover() = energia >= self.energiaNecesaria(1) && not self.esAtrapada()
+	method puedeMover() = energia >= self.energiaNecesaria(1) && not self.esAtrapada() 
 
 	method energiaNecesaria(kms) = joules * kms
 
@@ -89,7 +91,9 @@ object pepita {
 		comida.andate()
 	}
 
+	//
 
+	
 	
 	
 	
