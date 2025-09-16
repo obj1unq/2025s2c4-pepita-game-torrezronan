@@ -19,5 +19,4 @@ object izquierda{
     method siguiente(posicion) = posicion.left(1)
 
 
-    
 }

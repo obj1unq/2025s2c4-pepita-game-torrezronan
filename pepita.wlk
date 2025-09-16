@@ -93,7 +93,7 @@ object pepita {
 
 	//
 
-	
+	method esLimite() = eslimite()
 	
 	
 	
