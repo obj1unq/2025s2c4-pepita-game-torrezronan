@@ -2,7 +2,7 @@ import comidas.*
 import wollok.game.*
 import extras.*
 import direcciones.*
-import limites.*
+
 
 
 
@@ -66,17 +66,10 @@ object pepita {
 	//
 
 
-	method mover(direccion){
-		if(self.puedeMover()){
-			self.volar(1)
-			position = direccion.siguiente(position)
-		} else {
-			self.perder()
-		}
-	}
+	
 
 	method perder(){
-		game.say(self, "Perdí!")
+		game.say(self,"Perdí!")
 		game.schedule( 2000, { game.stop() })
 	}
 
@@ -93,9 +86,25 @@ object pepita {
 
 	//
 
-	method esLimite() = eslimite()
+	method moverCuadoPuede(direccion) {
+		if(self.puedeMover()){self.volar(1)
+			position = direccion.siguiente(position)}
+		else {self.perder()}
+	}
 	
-	
+	method mover(direccion) {
+		const personaje = self
+		const nuevaPosicion = direccion.siguiente( personaje.position() )
+		
+		if(nuevaPosicion.x()< game.width() && nuevaPosicion.x() >= 0 && nuevaPosicion.y()< game.height() && nuevaPosicion.y() >= 0    )
+			self.moverCuadoPuede(direccion)
+		}
+
+		//Para tener en cuenta la nueva posicion se compara con el numero de identificacion de la celda que arranca de 0 a N no con el numero de celda que va de 1 a N 
 	
 }
+
+
+
+
 
