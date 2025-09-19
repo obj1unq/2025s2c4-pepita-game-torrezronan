@@ -1,7 +1,9 @@
+import muros.*
 import comidas.*
 import wollok.game.*
 import extras.*
 import direcciones.*
+
 
 
 
@@ -13,6 +15,7 @@ object pepita {
 	const predador = silvestre
 	const joules = 9
 	const hogar = nido
+	var property obstaculo = muroDos
 	
 	method text() = "Energia: \n" + energia
 	method textColor() = "FF0000"
@@ -96,13 +99,32 @@ object pepita {
 		const personaje = self
 		const nuevaPosicion = direccion.siguiente( personaje.position() )
 		
-		if(nuevaPosicion.x()< game.width() && nuevaPosicion.x() >= 0 && nuevaPosicion.y()< game.height() && nuevaPosicion.y() >= 0    )
+		if(nuevaPosicion.x()< game.width() && nuevaPosicion.x() >= 0 && nuevaPosicion.y()< game.height() && nuevaPosicion.y() >= 0 && not self.hayCajaProximaPosicion(direccion)   )
 			self.moverCuadoPuede(direccion)
 		}
 
 		//Para tener en cuenta la nueva posicion se compara con el numero de identificacion de la celda que arranca de 0 a N no con el numero de celda que va de 1 a N 
 	
+
+	method caete() {
+		const direccion = abajo
+		
+		const nuevaPosicion = direccion.siguiente( position )
+		
+		if(nuevaPosicion.x()< game.width() && nuevaPosicion.x() >= 0 && nuevaPosicion.y()< game.height() && nuevaPosicion.y() >= 0 && self.puedeMover() && not self.hayCajaProximaPosicion(direccion)   )
+			position = direccion.siguiente(position)
+		
+	}
+
+
+	method hayCajaProximaPosicion(direccion) {
+		
+		return direccion.siguiente(position) == obstaculo.position()
+	} 
 }
+
+
+
 
 
 
